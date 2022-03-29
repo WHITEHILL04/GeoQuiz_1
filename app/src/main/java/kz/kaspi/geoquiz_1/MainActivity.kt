@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
 	private lateinit var prevButton: Button
 	private lateinit var  questionTextView: TextView
 
+	private var currentIndex = 0
+
 	private val questionsBank = listOf(
 		Questions(R.string.question_australia, true),
 		Questions(R.string.question_ocean, true),
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 		Questions(R.string.question_americas, true),
 		Questions(R.string.question_asia, true))
 
-	private var currentIndex = 0
+
 
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,11 +53,6 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		prevButton.setOnClickListener {
-//			if (currentIndex - 1 < 0) {
-//				currentIndex = questionsBank.size - 1
-//			} else{
-//				currentIndex = (currentIndex - 1) % questionsBank.size
-//			}
 			currentIndex = (questionsBank.size + (currentIndex - 1)) % questionsBank.size
 			updateQuestion()
 		}
@@ -64,10 +61,7 @@ class MainActivity : AppCompatActivity() {
 			currentIndex = (currentIndex + 1) % questionsBank.size
 			updateQuestion()
 		}
-
 		updateQuestion()
-
-
 	}
 
 
